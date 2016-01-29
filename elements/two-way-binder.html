@@ -3,10 +3,10 @@
 <dom-module id="two-way-binder">
 
   <template>
-    <h3>Enter your data below to see it bound</h3>
-    <input value={{data::input}} />
+    <span>Enter your data below to see it bound</span>
+    <input placeholder="type something here ..." type="text" value={{data::input}} />
     <br />
-    <p>[[data]]</p>
+    <div>Your bound data will appear here: <span>[[data]]</span></div>
   </template>
 
   <script>
