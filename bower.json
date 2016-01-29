@@ -1,0 +1,21 @@
+{
+  "name": "polymer-intro",
+  "authors": [
+    "Sean G. Wright <sean@seangwright.me>"
+  ],
+  "description": "Intro to polymer demo",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "http://www.seangwright.me/blog/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "^0.7.20"
+  }
+}
