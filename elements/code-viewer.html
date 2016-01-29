@@ -1,0 +1,56 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+<dom-module id="code-viewer">
+
+  <style>
+    #rendered-code {
+      opacity: 0;
+    }
+    
+    .code-view {
+      padding: 1em;
+    }
+  </style>
+
+  <template>
+    <div class="input-field">
+      <textarea tabindex="1" id="input-area" class="materialize-textarea" value="{{dataIn::input}}" on-blur="onBlur"></textarea>
+      <label for="input-area">Copy your code below</label>
+    </div>
+    <h6 class="center-align">View highlighted code below</h6>
+    <div class="code-view z-depth-1">
+      <pre><code id="rendered-code"></code></pre>
+    </div>
+    <div class="input-field">
+      <button tabindex="2" class="waves-effect waves-light btn" on-click="clearForm">Clear</button>
+    </div>
+  </template>
+
+  <script>
+    "use strict";
+      
+    Polymer({
+      is: "code-viewer",
+      ready: function() {
+        hljs.configure({ tabReplace: '   '});
+      },
+      onBlur: function(event) {
+        let code = hljs.highlightAuto(this.dataIn).value;
+        
+        $("#rendered-code").html(code);
+        
+        Materialize.fadeInImage('#rendered-code');
+      },
+      clearForm: function(event) {
+        this.dataIn = '';
+        
+        $('#input-area').trigger('autoresize');
+        $("#rendered-code").empty();
+      }
+    });
+  </script>
+
+</dom-module>
